@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
        - name: server-service
-         image: DOCKER_USERNAME/REPO_NAME
+         image: harryhys/spring-petclinic
          imagePullPolicy: Always
 ---
 apiVersion: v1
@@ -24,9 +24,10 @@ metadata:
   name: service-entrypoint
   namespace: default
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     service: server
   ports:
   - port: 8080
     targetPort: 8080
+    nodePort: 30001

@@ -19,7 +19,4 @@ RUN ./mvnw package
 FROM eclipse-temurin:17-jre-jammy as production
 EXPOSE 8080
 COPY --from=build /app/target/spring-petclinic-*.jar /spring-petclinic.jar
-RUN mkdir -p /usr/local/newrelic
-ADD ./newrelic/newrelic.jar /usr/local/newrelic/newrelic.jar
-ADD ./newrelic/newrelic.yml /usr/local/newrelic/newrelic.yml
-CMD ["java","-javaagent:/usr/local/newrelic/newrelic.jar", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/spring-petclinic.jar"]
+CMD ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "/spring-petclinic.jar"]

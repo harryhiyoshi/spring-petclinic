@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
        - name: server-service
-         image: harryhys/spring-petclinic
+         image: harryhys/spring-petclinic-mac
          imagePullPolicy: Always
 ---
 apiVersion: v1
